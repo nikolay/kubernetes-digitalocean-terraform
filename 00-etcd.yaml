@@ -9,6 +9,5 @@ coreos:
     cert-file: /etc/kubernetes/ssl/etcd.pem
     key-file: /etc/kubernetes/ssl/etcd-key.pem
   units:
-    - name: etcd2.service
-      command: start
-
+  - name: etcd2.service
+    command: start

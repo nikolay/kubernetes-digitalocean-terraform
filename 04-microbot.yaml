@@ -1,3 +1,4 @@
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -5,8 +6,8 @@ metadata:
   namespace: default
   labels:
     k8s-app: microbot
-    kubernetes.io/cluster-service: "true"
-    kubernetes.io/name: "microbot"
+    kubernetes.io/cluster-service: true
+    kubernetes.io/name: microbot
 spec:
   selector:
     k8s-app: microbot
@@ -16,10 +17,8 @@ spec:
     protocol: TCP
   externalIPs:
   - $EXT_IP1
-    
 
 ---
-
 apiVersion: v1
 kind: ReplicationController
 metadata:
@@ -28,7 +27,7 @@ metadata:
   labels:
     k8s-app: microbot
     version: v1
-    kubernetes.io/cluster-service: "true"
+    kubernetes.io/cluster-service: true
 spec:
   replicas: 25
   selector:
@@ -39,7 +38,7 @@ spec:
       labels:
         k8s-app: microbot
         version: v1
-        kubernetes.io/cluster-service: "true"
+        kubernetes.io/cluster-service: true
     spec:
       containers:
       - name: microbot
@@ -66,4 +65,3 @@ spec:
             scheme: HTTP
           initialDelaySeconds: 1
           timeoutSeconds: 5
-
